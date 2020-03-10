@@ -47,7 +47,7 @@
             <div>
                 <a v-on:[eventname]="doSomething()"> ... </a>
                 <!-- 这会触发一个编译警告 -->
-                <a v-bind:['foo'+bar]="value"> ... </a>
+                <!-- <a v-bind:['foo' + bar]="value"> ... </a> -->
             </div>
         </div>
 
@@ -63,7 +63,7 @@
             id: 3,
             seen: true,
             url: "http://www.baidu.com",
-            eventname: 'focus',
+            eventname: 'click',
             bar:1
 
         },
