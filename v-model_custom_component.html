@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div>自定义组件上使用v-model</div>
+
+    <!-- <custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input> -->
+    <div id="custom-input">
+        <custom-input v-model="searchText"></custom-input>
+    </div>
+</body>
+<script>
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+    })
+
+    new Vue({
+        el: '#custom-input',
+        data:{
+            searchText: 1
+        }
+    })
+</script>
+
+</html>

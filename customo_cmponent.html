@@ -13,6 +13,13 @@
                 v-bind:post="post"></blog-post>
         </div>
     </div>
+
+    <div>自定义组件上使用model</div>
+
+    <!-- <custom-input v-bind:value="searchText" v-on:input="searchText = $event"></custom-input> -->
+    <div id="custom-input" >
+        <custom-input v-model="searchText"></custom-input>
+    </div>
 </body>
 
 
@@ -52,6 +59,27 @@
                 })
         }
     })
+
+
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+    })
+
+    new Vue({
+        el: '#custom-input',
+        methods: {
+            searchText: function () {
+                alert("searchText");
+            }
+        }
+    })
+
 </script>
 
 </html>
