@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Vue基础</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>插值</h1>
+
+            <h2>文本</h2>
+            <div>
+                <span>Message: {{ msg }}</span>
+                <br />
+                <!-- 执行一次性地插值，当数据改变时，插值处的内容不会更新 -->
+                <span v-once>这个将不会改变: {{ msg }}</span>
+            </div>
+
+            <h2>原始HTML</h2>
+            <div>
+                <p>Using mustaches: {{ rawHtml }}</p>
+                <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+            </div>
+
+            <h2>attribute</h2>
+            <div>
+                <div v-bind:id="dynamicId"></div>
+            </div>
+        </div>
+
+        <div>
+            <h2>使用 JavaScript 表达式</h2>
+            <div>
+                <div v-bind:id="'list-'+id">id</div>
+            </div>
+
+            <h1>指令</h1>
+            <h2>参数</h2>
+            <div>
+                <p v-if="seen">现在你看到我了</p>
+                <a v-bind:href="url">...</a>
+            </div>
+            <h2>动态参数</h2>
+            <div>
+                <a v-on:[eventname]="doSomething()"> ... </a>
+                <!-- 这会触发一个编译警告 -->
+                <a v-bind:['foo'+bar]="value"> ... </a>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: 'div',
+        data: {
+            msg: 'hello',
+            rawHtml: '<span style="color:red">This is red</span>',
+            dynamicId: 'att1',
+            id: 3,
+            seen: true,
+            url: "http://www.baidu.com",
+            eventname: 'focus',
+            bar:1
+
+        },
+        methods: {
+            doSomething: function () {
+                alert("doSomething");
+            }
+        }
+    })
+</script>
+
+</html>

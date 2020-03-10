@@ -59,10 +59,11 @@
     <div id="example">
         <p>Original message: "{{ message }}"</p>
         <p>Computed reversed message: "{{ reversedMessage }}"</p>
-       
+
     </div>
 
-    <h1 v-show="ss">Hello!</h1>
+    <p>Using mustaches: {{ rawHtml }}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
 </body>
 <script>
     var app = new Vue({
